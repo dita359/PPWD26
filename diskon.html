@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glow Beauty - Toko Kosmetik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    :root {
+      --bg1: #f6e3e5;
+      --bg2: #e6c1c8;
+      --card: #fdf1f2;
+      --card2: #f4d6da;
+      --line: #dcb0b8;
+      --text: #5a3441;
+      --muted: #8a6470;
+      --btn: #8b5368;
+      --btn-hover: #744257;
+      --price: #a04a64;
+      --err: #b3261e;
+      --ok: #2e6b3a;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg2); }
+    body {
+      margin: 0;
+      font-family: 'Jost', Arial, sans-serif;
+      font-size: 15px;
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+    .wrap { max-width: 1100px; margin: auto; }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 36px;
+      padding: 46px 20px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #f4cfd5, #e3aab6);
+      box-shadow: 0 10px 30px rgba(139,83,104,.18);
+    }
+    .hero h1 { margin: 0; font-size: 52px; letter-spacing: 1px; color: #5a3441; }
+    .hero p { color: #6e4553; margin: 10px 0 0; font-size: 17px; font-weight: 500; }
+    .promo {
+      display: inline-block;
+      margin-top: 18px;
+      background: var(--btn);
+      color: #fdf1f2;
+      padding: 8px 22px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: .5px;
+    }
+
+    .layout { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-start; }
+    .produk { flex: 2; min-width: 300px; }
+    .keranjang { flex: 1; min-width: 290px; position: sticky; top: 16px; }
+
+    h2 { font-size: 28px; color: var(--text); margin: 0 0 16px; }
+    .produk h2 { text-align: left; font-size: 32px; margin-bottom: 20px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 16px; }
+    .item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .item:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(139,83,104,.22); }
+    .ikon {
+      color: var(--btn);
+      background: linear-gradient(160deg, #f8dce0, #eab9c2);
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ikon svg { width: 54px; height: 54px; }
+    .item h3 { margin: 4px 0 4px; font-size: 20px; }
+    .item small { color: var(--muted); display: block; min-height: 34px; font-size: 12.5px; line-height: 1.35; }
+    .harga { color: var(--price); font-weight: 600; margin: 8px 0 10px; font-size: 15px; }
+
+    button {
+      background: var(--btn);
+      color: #fdf1f2;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-family: 'Jost', Arial, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 13px;
+      letter-spacing: .3px;
+      transition: background .2s;
+    }
+    button:hover { background: var(--btn-hover); }
+    button.terang { background: var(--card2); color: var(--text); border: 1px solid var(--line); }
+    button.terang:hover { background: #fbe4e7; }
+
+    .box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .box h2 { font-size: 24px; }
+    .kosong { color: var(--muted); text-align: center; padding: 14px 0; }
+    .baris {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 14px;
+    }
+    .mini { width: 34px; height: 34px; color: var(--btn); flex-shrink: 0; }
+    .mini svg { width: 100%; height: 100%; }
+    .baris .nama { flex: 1; }
+    .baris small { color: var(--muted); }
+    .qty { display: flex; align-items: center; gap: 8px; }
+    .qty button { padding: 2px 10px; font-size: 15px; }
+    .ringkasan { margin-top: 14px; line-height: 1.8; }
+    .ringkasan div { display: flex; justify-content: space-between; }
+    .total { font-size: 18px; font-weight: 600; color: var(--price); }
+    #cartTotal s { color: var(--muted); font-size: 13px; margin-right: 6px; }
+    .hemat { color: var(--ok); font-size: 13px; display: none; }
+
+    .riwayat-item {
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(70,35,50,.6);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 10;
+    }
+    .modal-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      width: 100%;
+      max-width: 420px;
+    }
+    label { display: block; margin-top: 12px; font-size: 14px; font-weight: 500; }
+    input, textarea {
+      width: 100%;
+      margin-top: 4px;
+      padding: 10px 14px;
+      background: #fff8f9;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: 'Jost', Arial, sans-serif;
+    }
+    input:focus, textarea:focus { outline: 2px solid var(--btn); }
+    .error { display: none; color: var(--err); font-size: 12px; margin-top: 3px; }
+    .aksi { display: flex; gap: 10px; margin-top: 18px; }
+    #pesanSukses {
+      display: none;
+      background: #d9eddc;
+      color: var(--ok);
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 34px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Glow Beauty</h1>
+    <p>Kosmetik pilihan untuk kulit cerahmu</p>
+    <span class="promo">Belanja di atas Rp 100.000 diskon 10%</span>
+  </div>
+
+  <div id="pesanSukses"></div>
+
+  <div class="layout">
+
+    <div class="produk">
+      <h2>Produk Kami</h2>
+      <div class="grid" id="daftarProduk"></div>
+    </div>
+
+    <div class="keranjang">
+      <div class="box">
+        <h2>Keranjang</h2>
+        <div id="isiCart"></div>
+        <div class="ringkasan">
+          <div><span>Jumlah item</span><span id="cartQty">0</span></div>
+          <div class="total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+          <div class="hemat" id="cartHemat"></div>
+        </div>
+        <div class="aksi">
+          <button id="btnCheckout">Checkout</button>
+          <button id="btnKosongkan" class="terang">Kosongkan</button>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>Riwayat Belanja</h2>
+        <div id="daftarRiwayat"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2026 Glow Beauty</footer>
+</div>
+
+<div id="modal">
+  <div class="modal-box">
+    <h2>Data Pembeli</h2>
+    <form id="formPembeli">
+      <label>Nama Lengkap</label>
+      <input type="text" id="inNama" placeholder="Nama lengkap">
+      <div class="error" id="errNama">Nama minimal 3 karakter</div>
+
+      <label>Alamat</label>
+      <textarea id="inAlamat" rows="2" placeholder="Alamat lengkap"></textarea>
+      <div class="error" id="errAlamat">Alamat minimal 10 karakter</div>
+
+      <label>No. HP</label>
+      <input type="text" id="inHp" placeholder="08xxxxxxxxxx">
+      <div class="error" id="errHp">No. HP harus diawali 08 dan 10-13 digit</div>
+
+      <div class="aksi">
+        <button type="submit">Bayar Sekarang</button>
+        <button type="button" id="btnBatal" class="terang">Batal</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    var svgAwal = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">';
+    var ikon = {
+      cushion: svgAwal + '<circle cx="24" cy="28" r="14"/><circle cx="24" cy="28" r="8"/><path d="M12 16c3-6 21-6 24 0"/></svg>',
+      lipstik: svgAwal + '<rect x="15" y="30" width="18" height="12" rx="2"/><rect x="18" y="22" width="12" height="8"/><path d="M18 22V12l12-4v14"/></svg>',
+      serum:   svgAwal + '<rect x="13" y="22" width="22" height="20" rx="4"/><path d="M20 22v-6h8v6"/><path d="M24 16V8"/><path d="M20 8h8"/></svg>',
+      bedak:   svgAwal + '<rect x="7" y="14" width="34" height="24" rx="7"/><path d="M7 24h34"/><circle cx="24" cy="31" r="3"/></svg>',
+      maskara: svgAwal + '<rect x="19" y="4" width="10" height="16" rx="3"/><path d="M24 20v8"/><rect x="21" y="28" width="6" height="16" rx="2"/><path d="M18 31h-4M18 36h-4M30 31h4M30 36h4"/></svg>',
+      parfum:  svgAwal + '<rect x="11" y="20" width="26" height="22" rx="5"/><rect x="19" y="12" width="10" height="8"/><rect x="16" y="5" width="16" height="7" rx="2"/></svg>'
+    };
+
+    var produk = [
+      { id: 1, nama: 'Cushion',  ket: 'Alas bedak ringan dengan perlindungan SPF 35', harga: 85000,  ikon: ikon.cushion },
+      { id: 2, nama: 'Lipstik',  ket: 'Warna rose yang tahan lama di bibir', harga: 55000,  ikon: ikon.lipstik },
+      { id: 3, nama: 'Serum',    ket: 'Vitamin C untuk wajah tampak cerah', harga: 120000, ikon: ikon.serum },
+      { id: 4, nama: 'Bedak',    ket: 'Kontrol minyak nyaman seharian', harga: 40000,  ikon: ikon.bedak },
+      { id: 5, nama: 'Maskara',  ket: 'Tahan air dan membuat bulu mata lentik', harga: 48000,  ikon: ikon.maskara },
+      { id: 6, nama: 'Parfum',   ket: 'Aroma bunga yang manis dan segar', harga: 150000, ikon: ikon.parfum }
+    ];
+
+    var cart = [];
+
+    function rupiah(angka) {
+      return 'Rp ' + angka.toLocaleString('id-ID');
+    }
+
+    $.each(produk, function (i, p) {
+      $('#daftarProduk').append(
+        '<div class="item">' +
+          '<div class="ikon">' + p.ikon + '</div>' +
+          '<h3>' + p.nama + '</h3>' +
+          '<small>' + p.ket + '</small>' +
+          '<div class="harga">' + rupiah(p.harga) + '</div>' +
+          '<button class="btnTambah" data-id="' + p.id + '">+ Keranjang</button>' +
+        '</div>'
+      );
+    });
+
+    function updateCartUI() {
+      var html = '';
+      var totalQty = 0;
+
+      if (cart.length === 0) {
+        html = '<div class="kosong">Keranjang masih kosong</div>';
+      } else {
+        $.each(cart, function (i, item) {
+          totalQty += item.qty;
+          html +=
+            '<div class="baris">' +
+              '<span class="mini">' + item.ikon + '</span>' +
+              '<span class="nama">' + item.nama + '<br><small>' + rupiah(item.harga) + '</small></span>' +
+              '<span class="qty">' +
+                '<button class="btnKurang terang" data-id="' + item.id + '">-</button>' +
+                '<b>' + item.qty + '</b>' +
+                '<button class="btnPlus terang" data-id="' + item.id + '">+</button>' +
+              '</span>' +
+            '</div>';
+        });
+      }
+
+      $('#isiCart').html(html);
+      $('#cartQty').text(totalQty);
+
+      let totalHarga = cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
+      if (totalHarga > 100000) {
+        const diskon = totalHarga * 0.1;
+        totalHarga -= diskon;
+        $('#cartTotal').html(
+          '<s>Rp ' + (totalHarga + diskon).toLocaleString('id-ID') + '</s> ' +
+          'Rp ' + totalHarga.toLocaleString('id-ID')
+        );
+        $('#cartHemat').text('Kamu hemat ' + rupiah(diskon) + ' (diskon 10%)').show();
+      } else {
+        $('#cartTotal').text(rupiah(totalHarga));
+        $('#cartHemat').hide();
+      }
+    }
+
+    function simpanRiwayat(total, qty) {
+      const riwayat = JSON.parse(localStorage.getItem('riwayat')) || [];
+      riwayat.push({ tanggal: new Date().toISOString(), total, qty });
+      localStorage.setItem('riwayat', JSON.stringify(riwayat));
+    }
+
+    function tampilRiwayat() {
+      var riwayat = JSON.parse(localStorage.getItem('riwayat')) || [];
+      if (riwayat.length === 0) {
+        $('#daftarRiwayat').html('<div class="kosong">Belum ada transaksi</div>');
+        return;
+      }
+      var html = '';
+      $.each(riwayat.slice().reverse(), function (i, r) {
+        var tgl = new Date(r.tanggal).toLocaleString('id-ID');
+        html += '<div class="riwayat-item"><span>' + tgl + '<br>' + r.qty + ' item</span><b>' + rupiah(r.total) + '</b></div>';
+      });
+      $('#daftarRiwayat').html(html);
+    }
+
+    function hitungTotal() {
+      var t = cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
+      return t > 100000 ? t - t * 0.1 : t;
+    }
+
+    $('#daftarProduk').on('click', '.btnTambah', function () {
+      var id = $(this).data('id');
+      var ada = cart.find(function (c) { return c.id === id; });
+      if (ada) {
+        ada.qty++;
+      } else {
+        var p = produk.find(function (x) { return x.id === id; });
+        cart.push({ id: p.id, nama: p.nama, harga: p.harga, ikon: p.ikon, qty: 1 });
+      }
+      updateCartUI();
+    });
+
+    $('#isiCart').on('click', '.btnPlus', function () {
+      var id = $(this).data('id');
+      cart.find(function (c) { return c.id === id; }).qty++;
+      updateCartUI();
+    });
+
+    $('#isiCart').on('click', '.btnKurang', function () {
+      var id = $(this).data('id');
+      var item = cart.find(function (c) { return c.id === id; });
+      item.qty--;
+      if (item.qty <= 0) {
+        cart = cart.filter(function (c) { return c.id !== id; });
+      }
+      updateCartUI();
+    });
+
+    $('#btnKosongkan').click(function () {
+      cart = [];
+      updateCartUI();
+    });
+
+    $('#btnCheckout').click(function () {
+      if (cart.length === 0) {
+        alert('Keranjang masih kosong!');
+        return;
+      }
+      $('#modal').css('display', 'flex').hide().fadeIn(300);
+    });
+
+    $('#btnBatal').click(function () {
+      $('#modal').fadeOut(200);
+    });
+
+    function cekNama() {
+      var ok = $('#inNama').val().trim().length >= 3;
+      if (ok) { $('#errNama').hide(); } else { $('#errNama').show(); }
+      return ok;
+    }
+    function cekAlamat() {
+      var ok = $('#inAlamat').val().trim().length >= 10;
+      if (ok) { $('#errAlamat').hide(); } else { $('#errAlamat').show(); }
+      return ok;
+    }
+    function cekHp() {
+      var ok = /^08\d{8,11}$/.test($('#inHp').val().trim());
+      if (ok) { $('#errHp').hide(); } else { $('#errHp').show(); }
+      return ok;
+    }
+
+    $('#inNama').on('input', cekNama);
+    $('#inAlamat').on('input', cekAlamat);
+    $('#inHp').on('input', cekHp);
+
+    $('#formPembeli').submit(function (e) {
+      e.preventDefault();
+      var a = cekNama(), b = cekAlamat(), c = cekHp();
+
+      if (a && b && c) {
+        var total = hitungTotal();
+        var qty = cart.reduce((sum, item) => sum + item.qty, 0);
+        var nama = $('#inNama').val().trim();
+
+        simpanRiwayat(total, qty);
+        tampilRiwayat();
+
+        cart = [];
+        updateCartUI();
+        this.reset();
+        $('#modal').fadeOut(200);
+
+        $('#pesanSukses')
+          .text('Terima kasih ' + nama + '! Pesanan ' + rupiah(total) + ' berhasil dibuat.')
+          .fadeIn().delay(3500).fadeOut();
+      }
+    });
+
+    $('#daftarProduk').on('mouseenter', '.item', function () {
+      $(this).css('border-color', '#a04a64');
+    }).on('mouseleave', '.item', function () {
+      $(this).css('border-color', '#dcb0b8');
+    });
+
+    updateCartUI();
+    tampilRiwayat();
+  });
+</script>
+</body>
+</html>

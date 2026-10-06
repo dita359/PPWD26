@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Utin Dita Aryana</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    html {
+      background: #0a1f44;
+      color-scheme: dark;
+      min-height: 100%;
+    }
+    body {
+      background: #0a1f44;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 16px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .card {
+      max-width: 900px;
+      margin: auto;
+      background: #12306b;
+      border: 1px solid #234a94;
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .kiri { flex: 1; min-width: 260px; }
+    .kanan { flex: 1; min-width: 260px; }
+
+    .header { display: flex; align-items: center; gap: 18px; }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a8a, #2a4a9f);
+      border: 2px solid #3a5cc0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+    #nama { margin: 0; font-size: 28px; color: #ffffff; }
+    #role { margin: 4px 0 0; color: #d6def0; }
+    .info { margin: 24px 0; line-height: 1.9; color: #ffffff; }
+
+    .judul {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 0 16px;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 18px;
+      margin-bottom: 6px;
+      background: #0a1f44;
+      color: #ffffff;
+      border: 1px solid #2a4f9e;
+      border-radius: 30px;
+      font-size: 16px;
+    }
+    input::placeholder { color: #9fb0d3; }
+    input:focus { outline: 2px solid #3a5cc0; }
+    .error { display: none; color: #fca5a5; font-size: 13px; margin: 0 0 10px 16px; }
+    .sukses { display: none; color: #86efac; font-weight: bold; }
+
+    button {
+      background: #2a4a9f;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,.4);
+    }
+    button:hover { background: #3a5cc0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="kiri">
+      <div id="profil">
+        <div class="header">
+          <div class="avatar">👩‍💻</div>
+          <div>
+            <h1 id="nama">Utin Dita Aryana</h1>
+            <p id="role">Front-End Developer</p>
+          </div>
+        </div>
+        <div class="info">
+          <div>📍 Pontianak, Indonesia</div>
+          <div>✉️ utindita91@gmail.com</div>
+        </div>
+      </div>
+      <button id="btnUbah">Ubah Profil</button>
+    </div>
+
+    <div class="kanan">
+      <p class="judul" id="judulPesan">Tinggalkan Pesan</p>
+      <form id="formPesan">
+        <input type="text" id="inNama" placeholder="Nama Anda">
+        <p class="error" id="errNama">Nama minimal 3 karakter</p>
+
+        <input type="text" id="inEmail" placeholder="Email Anda">
+        <p class="error" id="errEmail">Masukkan email yang valid</p>
+
+        <button type="submit">➤ Kirim</button>
+        <p class="sukses" id="sukses">✅ Pesan berhasil dikirim!</p>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    $(document).ready(function () {
+
+      var diubah = false;
+
+      $('#btnUbah').click(function () {
+        $('#profil').fadeOut(300, function () {
+          if (!diubah) {
+            $('#nama').text('Dita').css('color', '#d6def0');
+            $('#role').html('<b>Web Developer</b>');
+          } else {
+            $('#nama').text('Utin Dita Aryana').css('color', '#ffffff');
+            $('#role').html('Front-End-Developer');
+          }
+          diubah = !diubah;
+          $('#profil').fadeIn(400);
+        });
+      });
+
+      $('.avatar').hover(
+        function () { $(this).css('box-shadow', '0 0 0 4px #3a5cc0'); },
+        function () { $(this).css('box-shadow', 'none'); }
+      );
+
+      $('#judulPesan').click(function () {
+        $('#formPesan').slideToggle();
+      });
+
+      $('#inNama').on('input', function () {
+        if ($(this).val().trim().length < 3) { $('#errNama').show(); }
+        else { $('#errNama').hide(); }
+      });
+
+      $('#inEmail').on('input', function () {
+        if ($(this).val().indexOf('@') === -1) { $('#errEmail').show(); }
+        else { $('#errEmail').hide(); }
+      });
+
+
+      $('#formPesan').submit(function (e) {
+        e.preventDefault();
+        var valid = true;
+
+        if ($('#inNama').val().trim().length < 3) {
+          $('#errNama').show(); valid = false;
+        } else { $('#errNama').hide(); }
+
+        if ($('#inEmail').val().indexOf('@') === -1) {
+          $('#errEmail').show(); valid = false;
+        } else { $('#errEmail').hide(); }
+
+        if (valid) {
+          $('#sukses').fadeIn().delay(2000).fadeOut();
+          this.reset();
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
