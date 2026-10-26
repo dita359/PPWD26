@@ -1,196 +1,201 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warung Ice Cream - Es Krim Segar Setiap Hari</title>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous"></script>
-
-    <!-- Font Awesome untuk ikon -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- CSS Eksternal -->
+    <title>Toko Novel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 
-    <!-- ========== NAVBAR ========== -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-ice-cream"></i>
-                <span>Warung Ice Cream</span>
-            </div>
-
-            <div class="nav-menu" id="navMenu">
-                <a class="nav-link active" data-filter="all">Semua</a>
-                <a class="nav-link" data-filter="es-krim">Es Krim</a>
-                <a class="nav-link" data-filter="sundae">Sundae</a>
-                <a class="nav-link" data-filter="minuman">Minuman</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="cart-btn" id="riwayatBtn">
-                    <i class="fas fa-history"></i>
-                    <span class="cart-text">Riwayat</span>
-                </div>
-
-                <div class="cart-btn" id="cartBtn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-text">Keranjang</span>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </div>
-            </div>
-
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+        <div class="container nav-inner">
+            <a href="#beranda" class="logo">UD</a>
+            <ul class="nav-list">
+                <li><a href="#beranda">Beranda</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn" type="button">Genre &#9662;</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#koleksi" data-genre="romance">Romance</a></li>
+                        <li><a href="#koleksi" data-genre="aksi">Aksi</a></li>
+                        <li><a href="#koleksi" data-genre="fantasi">Fantasi</a></li>
+                        <li><a href="#koleksi" data-genre="horor">Horor</a></li>
+                    </ul>
+                </li>
+                <li><a href="#koleksi">Koleksi</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#member" class="nav-cta">Jadi Member</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- ========== HERO SECTION ========== -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Selamat Datang di <span>Warung Ice Cream</span> 🍦</h1>
-            <p>Pilih es krim favoritmu, tambahkan ke keranjang, dan nikmati kesegarannya!</p>
+    <header id="beranda" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Kumpulan Novel Fiksi</h1>
+                <p>Toko novel fiksi dengan pilihan novel romance, aksi, fantasi, dan horor</p>
+                <div class="hero-btns">
+                    <a href="#koleksi" class="btn btn-primary">Lihat koleksi</a>
+                    <a href="#member" class="btn btn-ghost">Daftar member</a>
+                </div>
+            </div>
+            <div class="spines" aria-hidden="true">
+                <div class="spine" style="--h:250px;--c:#f08aa8"></div>
+                <div class="spine" style="--h:310px;--c:#c58fd6"></div>
+                <div class="spine" style="--h:270px;--c:#b5668c"></div>
+                <div class="spine" style="--h:340px;--c:#8c3b66"></div>
+                <div class="spine" style="--h:290px;--c:#e98fb0"></div>
+                <div class="spine" style="--h:240px;--c:#d9608a"></div>
+            </div>
+        </div>
+    </header>
 
-            <div class="search-box">
-                <input type="text" id="searchProduk" placeholder="Cari es krim favoritmu...">
-                <i class="fas fa-search"></i>
+    <section id="koleksi" class="section">
+        <div class="container">
+            <h2>Koleksi buku</h2>
+            <div class="tabs" role="tablist">
+                <button class="tab active" role="tab" aria-selected="true" type="button" data-genre="semua">Semua</button>
+                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="romance">Romance</button>
+                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="aksi">Aksi</button>
+                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="fantasi">Fantasi</button>
+                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="horor">Horor</button>
+            </div>
+
+            <div class="book-grid">
+                <article class="book" data-genre="romance">
+                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Mahajana</h3><small>Nadira Prameswari</small></div>
+                    <p class="blurb">Hayam yang bereinkarnasi dan bertemu sosok yang mirip dengan Sudewi.</p>
+                    <div class="price">Rp 89.000</div>
+                </article>
+                <article class="book" data-genre="romance">
+                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Bad Taste</h3><small>Queen Nakey</small></div>
+                    <p class="blurb">Fokus pada kisah seorang tokoh perempuan yang terjebak di antara dua laki-laki dengan karakter berbeda tetapi memiliki obsesi yang sama.</p>
+                    <div class="price">Rp 100.000</div>
+                </article>
+                <article class="book" data-genre="romance">
+                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Surat Untuk Jenaka</h3><small>Gigrey</small></div>
+                    <p class="blurb">Jenaka tidak sengaja merusak gelang berlian warisan milik nenek buyutnya yang kemudian memicu mesin waktu rahasia..</p>
+                    <div class="price">Rp 95.000</div>
+                </article>
+                <article class="book" data-genre="aksi">
+                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>The gray Man</h3><small>Mark Greaney</small></div>
+                    <p class="blurb">Mantan agen CIA yang kini menjadi pembunuh bayaran legendaris yang berjuluk "grayman".</p>
+                    <div class="price">Rp 98.000</div>
+                </article>
+                <article class="book" data-genre="aksi">
+                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>Negeri diujung tanduk</h3><small>Tere Liye</small></div>
+                    <p class="blurb">Seorang mantan konsultan ekonomi yang kini beralih menjadi konsultan politik.</p>
+                    <div class="price">Rp 85.000</div>
+                </article>
+                <article class="book" data-genre="aksi">
+                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>Mawar Merah</h3><small>Torashyngu</small></div>
+                    <p class="blurb">Pertualangan rachel seorang pembunuh bayaran yang menyamar menjadi mahasiswa dan terlibat dalam konspirasi kejahatan internasional.</p>
+                    <div class="price">Rp 112.000</div>
+                </article>
+                <article class="book" data-genre="fantasi">
+                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>Aroma Karsa</h3><small>Dee Lestari</small></div>
+                    <p class="blurb">Novel ini bercerita tentang perjalanan pemuda dengan indra penciuman yang luar biasa yang terlibat dalam dalam pencarian bunga legendaris.</p>
+                    <div class="price">Rp 200.000</div>
+                </article>
+                <article class="book" data-genre="fantasi">
+                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>The Major</h3><small>Duskintherain</small></div>
+                    <p class="blurb">Hidup mayor jendral vampir yang berubah saat bertemu dengan elaine.</p>
+                    <div class="price">Rp 120.000</div>
+                </article>
+                <article class="book" data-genre="fantasi">
+                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>Art Of Curse</h3><small>Belpoina</small></div>
+                    <p class="blurb">Mortey, negara yang dilanda kutukan misterius sejak insiden lima tahun yang lalu.</p>
+                    <div class="price">Rp 105.000</div>
+                </article>
+                <article class="book" data-genre="horor">
+                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Secret High School</h3><small>Queena</small></div>
+                    <p class="blurb">Arshaka,polisi intelejen muda yang menyamar sebagai siswa SMA Sudharma untuk menyelidiki kasus perdagangan organ misterius yang melibatkan adiknya.</p>
+                    <div class="price">Rp 102.000</div>
+                </article>
+                <article class="book" data-genre="horor">
+                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Ditanah berhala</h3><small>Tessia</small></div>
+                    <p class="blurb">Satya dan teman temannya mengalami kecelakaan bus. Kejadian tragis ini menjadi titik balik intens yang memaksa mereka mencari perlindungan.</p>
+                    <div class="price">Rp 90.000</div>
+                </article>
+                <article class="book" data-genre="horor">
+                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Kamar nomor 7</h3><small>Hazzahrra</small></div>
+                    <p class="blurb">Terdapat rumor bahwa kamar nomor 7 tersebut angker dan selalu "memakan korban" atau mencelakai setiap siswa yang menempatinya.</p>
+                    <div class="price">Rp 110.000</div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- ========== PRODUK SECTION ========== -->
-    <section class="produk-section">
-        <div class="section-header">
-            <h2><i class="fas fa-list"></i> Menu Kami</h2>
-            <div class="filter-btns">
-                <button class="filter-btn active" data-cat="all">Semua</button>
-                <button class="filter-btn" data-cat="es-krim">Es Krim</button>
-                <button class="filter-btn" data-cat="sundae">Sundae</button>
-                <button class="filter-btn" data-cat="minuman">Minuman</button>
+    <section id="tentang" class="section section-alt">
+        <div class="container about">
+            <h2>Novel fiksi</h2>
+            <p>Menyajikan beragam novel fiksi yang kamu cari!</p>
+            <div class="stats">
+                <div><strong>1.200+</strong><span>judul fiksi</span></div>
+                <div><strong>4</strong><span>genre pilihan</span></div>
+                <div><strong>34</strong><span>provinsi terjangkau</span></div>
             </div>
         </div>
-
-        <!-- Grid produk akan di-render oleh jQuery -->
-        <div class="produk-grid" id="produkGrid"></div>
     </section>
 
-    <!-- ========== CART SIDEBAR ========== -->
-    <div class="cart-overlay" id="cartOverlay"></div>
+    <section id="member" class="section">
+        <div class="container">
+            <h2>Daftar Member Toko Novel</h2>
+            <p class="section-sub">Member dapat diskon 10% dan info rilis buku terbaru.</p>
 
-    <aside class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h3>
-            <button class="cart-close" id="cartClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <div class="cart-items" id="cartItems">
-            <!-- Item keranjang akan di-render oleh jQuery -->
-        </div>
-
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span class="total-price" id="cartTotal">Rp 0</span>
-            </div>
-            <button class="btn-checkout" id="btnCheckout">
-                <i class="fas fa-check-circle"></i> Checkout Sekarang
-            </button>
-        </div>
-    </aside>
-
-    <!-- ========== MODAL FORM DATA PEMBELI ========== -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h3 id="modalTitle"><i class="fas fa-user-edit"></i> Data Pembeli</h3>
-                <button type="button" class="modal-close" id="modalClose" aria-label="Tutup">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <form id="formPembeli" novalidate>
-                <div class="modal-body">
-                    <div class="modal-summary" id="modalSummary"></div>
-
-                    <div class="form-group">
-                        <label for="inputNama">Nama Lengkap</label>
-                        <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso" autocomplete="name">
-                        <span class="form-error"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputAlamat">Alamat Pengantaran</label>
-                        <textarea id="inputAlamat" rows="3" placeholder="Contoh: Jl. Ahmad Yani No. 10" autocomplete="street-address"></textarea>
-                        <span class="form-error"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputHp">No HP / WhatsApp</label>
-                        <input type="tel" id="inputHp" placeholder="Contoh: 081234567890" autocomplete="tel">
-                        <span class="form-error"></span>
-                    </div>
+            <form id="formMember" class="form-box" novalidate>
+                <div class="form-group">
+                    <label for="mNama">Nama lengkap</label>
+                    <input type="text" id="mNama" name="nama" placeholder="Nama sesuai KTP">
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn-batal" id="btnBatal">Batal</button>
-                    <button type="submit" class="btn-konfirmasi" id="btnKonfirmasi">
-                        <i class="fas fa-check-circle"></i> Konfirmasi Pesanan
-                    </button>
+                <div class="form-group">
+                    <label for="mEmail">Email aktif</label>
+                    <input type="text" id="mEmail" name="email" placeholder="nama@gmail.com">
                 </div>
+                <div class="form-group">
+                    <label for="mHp">Nomor WhatsApp</label>
+                    <input type="text" id="mHp" name="hp" placeholder="10-12 digit angka">
+                </div>
+                <div class="form-group">
+                    <label for="mKota">Kota domisili</label>
+                    <input type="text" id="mKota" name="kota" placeholder="Contoh: Pontianak">
+                </div>
+                <div class="form-group">
+                    <label for="mGenre">Genre favorit</label>
+                    <select id="mGenre" name="genre">
+                        <option value="">-- Pilih genre --</option>
+                        <option>Romance</option>
+                        <option>Aksi</option>
+                        <option>Fantasi</option>
+                        <option>Horor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mPassword">Password</label>
+                    <input type="password" id="mPassword" name="password" placeholder="Minimal 8 karakter, ada huruf dan angka">
+                </div>
+                <div class="form-group">
+                    <label for="mKonfirmasi">Konfirmasi password</label>
+                    <input type="password" id="mKonfirmasi" name="konfirmasi" placeholder="Ulangi password yang sama">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Daftar member</button>
             </form>
         </div>
-    </div>
+    </section>
 
-    <!-- ========== MODAL RIWAYAT PESANAN ========== -->
-    <div class="modal-overlay" id="riwayatOverlay">
-        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="riwayatTitle">
-            <div class="modal-header">
-                <h3 id="riwayatTitle"><i class="fas fa-history"></i> Riwayat Pesanan</h3>
-                <button type="button" class="modal-close" id="riwayatClose" aria-label="Tutup">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <div class="riwayat-summary" id="riwayatSummary"></div>
-                <div class="riwayat-list" id="riwayatList"></div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn-batal" id="btnTutupRiwayat">Tutup</button>
-                <button type="button" class="btn-hapus-riwayat" id="btnHapusRiwayat">
-                    <i class="fas fa-trash"></i> Hapus Semua
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== TOAST NOTIFICATION ========== -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Produk ditambahkan!</span>
-    </div>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="footer">
-        <p><strong>Warung Ice Cream</strong> © 2025</p>
-        <p>Praktikum Pemrograman Web Dasar · Prodi Sistem Informasi</p>
+    <footer>
+        <p>&copy; 2026 Toko novel | Praktikum Pemrograman Web Dasar</p>
     </footer>
 
-    <!-- JavaScript Eksternal -->
+    <div id="toast"></div>
+    <button id="backToTop" type="button" aria-label="Kembali ke atas">&#8593;</button>
+
     <script src="script.js"></script>
 </body>
 </html>
