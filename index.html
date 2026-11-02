@@ -1,201 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Novel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portofolio Yan</title>
+    <!-- Menghubungkan file CSS -->
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 </head>
+
 <body>
-
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="#beranda" class="logo">UD</a>
-            <ul class="nav-list">
-                <li><a href="#beranda">Beranda</a></li>
-                <li class="dropdown">
-                    <button class="dropdown-btn" type="button">Genre &#9662;</button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#koleksi" data-genre="romance">Romance</a></li>
-                        <li><a href="#koleksi" data-genre="aksi">Aksi</a></li>
-                        <li><a href="#koleksi" data-genre="fantasi">Fantasi</a></li>
-                        <li><a href="#koleksi" data-genre="horor">Horor</a></li>
-                    </ul>
-                </li>
-                <li><a href="#koleksi">Koleksi</a></li>
-                <li><a href="#tentang">Tentang</a></li>
-                <li><a href="#member" class="nav-cta">Jadi Member</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header id="beranda" class="hero">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <h1>Kumpulan Novel Fiksi</h1>
-                <p>Toko novel fiksi dengan pilihan novel romance, aksi, fantasi, dan horor</p>
-                <div class="hero-btns">
-                    <a href="#koleksi" class="btn btn-primary">Lihat koleksi</a>
-                    <a href="#member" class="btn btn-ghost">Daftar member</a>
-                </div>
-            </div>
-            <div class="spines" aria-hidden="true">
-                <div class="spine" style="--h:250px;--c:#f08aa8"></div>
-                <div class="spine" style="--h:310px;--c:#c58fd6"></div>
-                <div class="spine" style="--h:270px;--c:#b5668c"></div>
-                <div class="spine" style="--h:340px;--c:#8c3b66"></div>
-                <div class="spine" style="--h:290px;--c:#e98fb0"></div>
-                <div class="spine" style="--h:240px;--c:#d9608a"></div>
-            </div>
-        </div>
+    <!-- ===== Bagian atas ===== -->
+    <header class="header">
+        <h2 class="logo">Yan</h2>
+        <button id="tombol-tema">Mode gelap</button>
     </header>
-
-    <section id="koleksi" class="section">
-        <div class="container">
-            <h2>Koleksi buku</h2>
-            <div class="tabs" role="tablist">
-                <button class="tab active" role="tab" aria-selected="true" type="button" data-genre="semua">Semua</button>
-                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="romance">Romance</button>
-                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="aksi">Aksi</button>
-                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="fantasi">Fantasi</button>
-                <button class="tab" role="tab" aria-selected="false" type="button" data-genre="horor">Horor</button>
-            </div>
-
-            <div class="book-grid">
-                <article class="book" data-genre="romance">
-                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Mahajana</h3><small>Nadira Prameswari</small></div>
-                    <p class="blurb">Hayam yang bereinkarnasi dan bertemu sosok yang mirip dengan Sudewi.</p>
-                    <div class="price">Rp 89.000</div>
-                </article>
-                <article class="book" data-genre="romance">
-                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Bad Taste</h3><small>Queen Nakey</small></div>
-                    <p class="blurb">Fokus pada kisah seorang tokoh perempuan yang terjebak di antara dua laki-laki dengan karakter berbeda tetapi memiliki obsesi yang sama.</p>
-                    <div class="price">Rp 100.000</div>
-                </article>
-                <article class="book" data-genre="romance">
-                    <div class="cover g-romance"><span class="badge">Romance</span><h3>Surat Untuk Jenaka</h3><small>Gigrey</small></div>
-                    <p class="blurb">Jenaka tidak sengaja merusak gelang berlian warisan milik nenek buyutnya yang kemudian memicu mesin waktu rahasia..</p>
-                    <div class="price">Rp 95.000</div>
-                </article>
-                <article class="book" data-genre="aksi">
-                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>The gray Man</h3><small>Mark Greaney</small></div>
-                    <p class="blurb">Mantan agen CIA yang kini menjadi pembunuh bayaran legendaris yang berjuluk "grayman".</p>
-                    <div class="price">Rp 98.000</div>
-                </article>
-                <article class="book" data-genre="aksi">
-                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>Negeri diujung tanduk</h3><small>Tere Liye</small></div>
-                    <p class="blurb">Seorang mantan konsultan ekonomi yang kini beralih menjadi konsultan politik.</p>
-                    <div class="price">Rp 85.000</div>
-                </article>
-                <article class="book" data-genre="aksi">
-                    <div class="cover g-aksi"><span class="badge">Aksi</span><h3>Mawar Merah</h3><small>Torashyngu</small></div>
-                    <p class="blurb">Pertualangan rachel seorang pembunuh bayaran yang menyamar menjadi mahasiswa dan terlibat dalam konspirasi kejahatan internasional.</p>
-                    <div class="price">Rp 112.000</div>
-                </article>
-                <article class="book" data-genre="fantasi">
-                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>Aroma Karsa</h3><small>Dee Lestari</small></div>
-                    <p class="blurb">Novel ini bercerita tentang perjalanan pemuda dengan indra penciuman yang luar biasa yang terlibat dalam dalam pencarian bunga legendaris.</p>
-                    <div class="price">Rp 200.000</div>
-                </article>
-                <article class="book" data-genre="fantasi">
-                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>The Major</h3><small>Duskintherain</small></div>
-                    <p class="blurb">Hidup mayor jendral vampir yang berubah saat bertemu dengan elaine.</p>
-                    <div class="price">Rp 120.000</div>
-                </article>
-                <article class="book" data-genre="fantasi">
-                    <div class="cover g-fantasi"><span class="badge">Fantasi</span><h3>Art Of Curse</h3><small>Belpoina</small></div>
-                    <p class="blurb">Mortey, negara yang dilanda kutukan misterius sejak insiden lima tahun yang lalu.</p>
-                    <div class="price">Rp 105.000</div>
-                </article>
-                <article class="book" data-genre="horor">
-                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Secret High School</h3><small>Queena</small></div>
-                    <p class="blurb">Arshaka,polisi intelejen muda yang menyamar sebagai siswa SMA Sudharma untuk menyelidiki kasus perdagangan organ misterius yang melibatkan adiknya.</p>
-                    <div class="price">Rp 102.000</div>
-                </article>
-                <article class="book" data-genre="horor">
-                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Ditanah berhala</h3><small>Tessia</small></div>
-                    <p class="blurb">Satya dan teman temannya mengalami kecelakaan bus. Kejadian tragis ini menjadi titik balik intens yang memaksa mereka mencari perlindungan.</p>
-                    <div class="price">Rp 90.000</div>
-                </article>
-                <article class="book" data-genre="horor">
-                    <div class="cover g-horor"><span class="badge">Horor</span><h3>Kamar nomor 7</h3><small>Hazzahrra</small></div>
-                    <p class="blurb">Terdapat rumor bahwa kamar nomor 7 tersebut angker dan selalu "memakan korban" atau mencelakai setiap siswa yang menempatinya.</p>
-                    <div class="price">Rp 110.000</div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="tentang" class="section section-alt">
-        <div class="container about">
-            <h2>Novel fiksi</h2>
-            <p>Menyajikan beragam novel fiksi yang kamu cari!</p>
-            <div class="stats">
-                <div><strong>1.200+</strong><span>judul fiksi</span></div>
-                <div><strong>4</strong><span>genre pilihan</span></div>
-                <div><strong>34</strong><span>provinsi terjangkau</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="member" class="section">
-        <div class="container">
-            <h2>Daftar Member Toko Novel</h2>
-            <p class="section-sub">Member dapat diskon 10% dan info rilis buku terbaru.</p>
-
-            <form id="formMember" class="form-box" novalidate>
-                <div class="form-group">
-                    <label for="mNama">Nama lengkap</label>
-                    <input type="text" id="mNama" name="nama" placeholder="Nama sesuai KTP">
-                </div>
-                <div class="form-group">
-                    <label for="mEmail">Email aktif</label>
-                    <input type="text" id="mEmail" name="email" placeholder="nama@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label for="mHp">Nomor WhatsApp</label>
-                    <input type="text" id="mHp" name="hp" placeholder="10-12 digit angka">
-                </div>
-                <div class="form-group">
-                    <label for="mKota">Kota domisili</label>
-                    <input type="text" id="mKota" name="kota" placeholder="Contoh: Pontianak">
-                </div>
-                <div class="form-group">
-                    <label for="mGenre">Genre favorit</label>
-                    <select id="mGenre" name="genre">
-                        <option value="">-- Pilih genre --</option>
-                        <option>Romance</option>
-                        <option>Aksi</option>
-                        <option>Fantasi</option>
-                        <option>Horor</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="mPassword">Password</label>
-                    <input type="password" id="mPassword" name="password" placeholder="Minimal 8 karakter, ada huruf dan angka">
-                </div>
-                <div class="form-group">
-                    <label for="mKonfirmasi">Konfirmasi password</label>
-                    <input type="password" id="mKonfirmasi" name="konfirmasi" placeholder="Ulangi password yang sama">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Daftar member</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Toko novel | Praktikum Pemrograman Web Dasar</p>
-    </footer>
-
-    <div id="toast"></div>
-    <button id="backToTop" type="button" aria-label="Kembali ke atas">&#8593;</button>
-
+    <main class="isi">
+        <!-- ===== Perkenalan ===== -->
+        <section class="perkenalan">
+            <h1>Halo, saya Yan.</h1>
+            <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>
+        </section>
+        <!-- ===== Daftar proyek ===== -->
+        <h2>Proyek saya</h2>
+        <!-- Kotak pencarian (dipakai oleh script.js) -->
+        <input type="text" id="cari" placeholder="Cari proyek...">
+        <section class="daftar-proyek">
+            <!-- Satu kartu = satu proyek.
+ href mengarah ke index.html di dalam folder proyek tersebut. -->
+            <a class="kartu" href="buku-tamu-digital/index.html">
+                <h3>Buku Tamu Digital</h3>
+                <p>Formulir pencatatan tamu kantor.</p>
+            </a>
+            <a class="kartu" href="mav-platform/index.html">
+                <h3>MAV Platform</h3>
+                <p>Menu berbeda untuk setiap peran pengguna.</p>
+            </a>
+            <a class="kartu" href="berita/portal_berita.html">
+                <h3>Berita</h3>
+                <p>Informasi dan berita terbaru.</p>
+            </a>
+            <a class="kartu" href="diskon/index.html">
+                <h3>Diskon</h3>
+                <p>Promo dan penawaran menarik.</p>
+            </a>
+            <a class="kartu" href="IceCream/index.html">
+                <h3>IceCream</h3>
+                <p>Berbagai pilihan es krim.</p>
+            </a>
+            <a class="kartu" href="Kopi/index.html">
+                <h3>Kopi</h3>
+                <p>Pilihan kopi untuk dinikmati.</p>
+            </a>
+            <a class="kartu" href="novel/index.html">
+                <h3>Novel</h3>
+                <p>Koleksi novel berbagai genre.</p>
+            </a>
+            <a class="kartu" href="profile/index.html">
+                <h3>Profile</h3>
+                <p>Informasi profil pengguna.</p>
+            </a>
+            <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,
+ lalu ubah href, judul, dan deskripsinya. -->
+        </section>
+        <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p>
+    </main>
+    <!-- Menghubungkan file JavaScript (letakkan paling bawah) -->
     <script src="script.js"></script>
 </body>
+
 </html>
