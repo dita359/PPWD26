@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechNews ID - Portal Berita</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --bs-dark-rgb: 11, 56, 44;
+            --aksen: #ff8a1f;
+        }
+        html { scroll-behavior: smooth; }
+        body { background-color: #f3f5f1; }
+        section, aside, footer { scroll-margin-top: 70px; }
+
+        .navbar { box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
+        .navbar-brand span { color: var(--aksen); }
+        .navbar .nav-link {
+            padding: .5rem .9rem;
+            border-bottom: 3px solid transparent;
+        }
+        .navbar .nav-link:hover { color: #fff; }
+        .navbar .nav-link.active {
+            color: #fff;
+            border-bottom-color: var(--aksen);
+        }
+        .navbar .nav-link:focus,
+        .navbar .nav-link:focus-visible { outline: none; box-shadow: none; }
+
+        .hero-gelap {
+            background: linear-gradient(135deg, #062019 0%, #0b382c 55%, #5c260a 100%);
+        }
+        .badge-aksen { background-color: var(--aksen); color: #1b1b1b; }
+
+        .judul-bagian { border-bottom: 3px solid var(--aksen); padding-bottom: .4rem; }
+
+        .berita-utama {
+            background-color: #fff;
+            border-left: 5px solid var(--aksen);
+            border-radius: .5rem;
+            padding: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+        .card { border: 0; border-top: 4px solid var(--aksen); box-shadow: 0 2px 8px rgba(0, 0, 0, .08); }
+        .list-group-numbered > .list-group-item::before { color: var(--aksen); font-weight: 700; }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#menuUtama" data-bs-root-margin="-80px 0px -30% 0px" data-bs-smooth-scroll="true">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#beranda">Tech<span>News</span> ID</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuUtama" aria-controls="menuUtama"
+                    aria-expanded="false" aria-label="Buka menu navigasi">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuUtama">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#berita-utama">Berita Utama</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#terbaru">Berita Terbaru</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid hero-gelap text-white py-5" id="beranda">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <span class="badge badge-aksen mb-3">Headline</span>
+                    <h1 class="display-5 fw-bold">BNPB Kerahkan 57 Ribu Personel Padamkan Karhutla di Kalimantan</h1>
+                    <p class="lead mb-2">Kebakaran hutan dan lahan masih terjadi di sejumlah wilayah. Ribuan hektare lahan di Kalimantan dan Sumatera belum padam hingga 25 Oktober 2026.</p>
+                    <p class="small mb-0 text-white-50">27 Oktober 2026 | Bencana</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-4">
+
+        <div class="row g-4 mb-5">
+            <section class="col-12 col-lg-8" id="berita-utama">
+                <h2 class="h4 judul-bagian mb-3">Berita Utama</h2>
+
+                <article class="berita-utama mb-4">
+                    <span class="badge badge-aksen mb-2">Lingkungan</span>
+                    <h3 class="h5">Kalimantan Barat Catat Lahan Terbakar Terluas di Indonesia</h3>
+                    <p class="text-muted small mb-2">Data Januari–Juli 2026</p>
+                    <p class="mb-0">Luas lahan terbakar di Kalimantan Barat mencapai 38.310,86 hektare. Angka ini melampaui total luas kebakaran di provinsi yang sama pada 2025, yaitu 26.702,81 hektare.</p>
+                </article>
+
+                <article class="berita-utama mb-4">
+                    <span class="badge badge-aksen mb-2">Teknologi</span>
+                    <h3 class="h5">Modifikasi Cuaca Dipakai untuk Mendatangkan Hujan</h3>
+                    <p class="text-muted small mb-2">23 Oktober 2026</p>
+                    <p class="mb-0">BNPB menyemai 14.300 kilogram bahan semai melalui 15 penerbangan di Kalimantan Tengah dan Sumatera Selatan. Hujan ringan hingga sedang turun di tujuh kabupaten di Kalimantan Barat, antara lain Sekadau, Ketapang, dan Sintang.</p>
+                </article>
+
+                <article class="berita-utama">
+                    <span class="badge badge-aksen mb-2">Pemerintahan</span>
+                    <h3 class="h5">Status Tanggap Darurat Karhutla Kalbar Diperpanjang</h3>
+                    <p class="text-muted small mb-2">5–18 Oktober 2026</p>
+                    <p class="mb-0">Pemerintah Provinsi Kalimantan Barat memperpanjang status tanggap darurat selama 14 hari. Hingga 25 Oktober, lahan yang belum padam di provinsi ini tercatat 884 hektare.</p>
+                </article>
+            </section>
+
+            <aside class="col-12 col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">Trending</div>
+                    <ol class="list-group list-group-flush list-group-numbered">
+                        <li class="list-group-item small">Tiga helikopter CH-47 bantuan Jepang tiba di Kalimantan Barat</li>
+                        <li class="list-group-item small">Pemerintah mengirim 500 pompa air ke wilayah Kalimantan</li>
+                        <li class="list-group-item small">Delapan orangutan dipindahkan karena kehilangan habitat akibat kebakaran</li>
+                        <li class="list-group-item small">Kualitas udara Palangka Raya masuk kategori berbahaya</li>
+                        <li class="list-group-item small">Kemenhut menyiagakan 61 armada udara untuk pemadaman</li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+
+        <section id="terbaru">
+            <h2 class="h4 judul-bagian mb-3">Berita Terbaru</h2>
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge badge-aksen mb-2">Data</span>
+                            <h3 class="h6 card-title">793 Titik Panas Berkepercayaan Tinggi Terdeteksi</h3>
+                            <p class="card-text small text-muted">Per 10 Oktober, Kalimantan Tengah mencatat 288 titik dan Kalimantan Barat 44 titik.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge badge-aksen mb-2">Masyarakat</span>
+                            <h3 class="h6 card-title">Masyarakat Peduli Api Dilibatkan dalam Pemadaman</h3>
+                            <p class="card-text small text-muted">Warga dibentuk menjadi kelompok untuk membantu pencegahan dan pemadaman kebakaran.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge badge-aksen mb-2">Kesehatan</span>
+                            <h3 class="h6 card-title">Asap Karhutla Mengandung Partikel Halus PM2.5</h3>
+                            <p class="card-text small text-muted">Partikel ini dapat masuk ke saluran pernapasan sehingga warga perlu waspada.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge badge-aksen mb-2">Daerah</span>
+                            <h3 class="h6 card-title">Balikpapan Catat 127 Kejadian Kebakaran Lahan</h3>
+                            <p class="card-text small text-muted">Data BPBD per 12 Oktober 2026 menunjukkan jumlah kejadian sepanjang tahun ini.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-dark text-white py-4" id="kontak">
+        <div class="container text-center">
+            <p class="mb-0 small">&copy; 2026 TechNews ID</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
