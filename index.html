@@ -5,8 +5,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portofolio Yan</title>
-    <!-- Menghubungkan file CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== 1. Warna =====
+           Variabel CSS: ubah warna cukup di sini saja. */
+        :root {
+            --latar: #eef3f1;
+            --kartu: #ffffff;
+            --teks: #1c2b27;
+            --teks-pudar: #5f726c;
+            --aksen: #0f766e;
+        }
+
+        /* Saat body diberi class "gelap" oleh JavaScript, warna berganti */
+        body.gelap {
+            --latar: #121a18;
+            --kartu: #1b2623;
+            --teks: #e6efec;
+            --teks-pudar: #94a8a1;
+            --aksen: #5fd1c4;
+        }
+
+        /* ==== 2. Dasar halaman ==== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--latar);
+            color: var(--teks);
+        }
+
+        /* ===== 3. Bagian atas ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            margin: 0;
+            color: var(--aksen);
+        }
+
+        #tombol-tema {
+            padding: 8px 16px;
+            border: 2px solid var(--aksen);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--aksen);
+            cursor: pointer;
+        }
+
+        /* ===== 4. Isi halaman ===== */
+        .isi {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .perkenalan {
+            padding: 50px 0 20px;
+        }
+
+        .perkenalan h1 {
+            font-size: 2.6rem;
+            margin: 0 0 8px;
+        }
+
+        .perkenalan p {
+            color: var(--teks-pudar);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* ===== 5. Pencarian ===== */
+        #cari {
+            width: 100%;
+            padding: 12px 16px;
+            margin: 8px 0 20px;
+            border: 1px solid var(--teks-pudar);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--kartu);
+            color: var(--teks);
+        }
+
+        /* ===== 6. Kartu proyek ===== */
+        .daftar-proyek {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .kartu {
+            display: block;
+            padding: 24px;
+            background: var(--kartu);
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            color: inherit;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .kartu:hover {
+            transform: translateY(-4px);
+        }
+
+        .kartu h3 {
+            margin: 0 0 6px;
+            color: var(--aksen);
+        }
+
+        .kartu p {
+            margin: 0;
+            color: var(--teks-pudar);
+        }
+
+        /* Pesan "tidak ditemukan" disembunyikan dulu */
+        .pesan-kosong {
+            display: none;
+            color: var(--teks-pudar);
+        }
+    </style>
 </head>
 
 <body>
@@ -15,19 +140,23 @@
         <h2 class="logo">Yan</h2>
         <button id="tombol-tema">Mode gelap</button>
     </header>
+
     <main class="isi">
         <!-- ===== Perkenalan ===== -->
         <section class="perkenalan">
             <h1>Halo, saya Yan.</h1>
             <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>
         </section>
+
         <!-- ===== Daftar proyek ===== -->
         <h2>Proyek saya</h2>
-        <!-- Kotak pencarian (dipakai oleh script.js) -->
+
+        <!-- Kotak pencarian -->
         <input type="text" id="cari" placeholder="Cari proyek...">
+
         <section class="daftar-proyek">
             <!-- Satu kartu = satu proyek.
- href mengarah ke index.html di dalam folder proyek tersebut. -->
+                 href mengarah ke index.html di dalam folder proyek tersebut. -->
             <a class="kartu" href="buku-tamu-digital/index.html">
                 <h3>Buku Tamu Digital</h3>
                 <p>Formulir pencatatan tamu kantor.</p>
@@ -61,12 +190,59 @@
                 <p>Informasi profil pengguna.</p>
             </a>
             <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,
- lalu ubah href, judul, dan deskripsinya. -->
+                 lalu ubah href, judul, dan deskripsinya. -->
         </section>
+
         <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p>
     </main>
-    <!-- Menghubungkan file JavaScript (letakkan paling bawah) -->
-    <script src="script.js"></script>
+
+    <script>
+        // ===== 1. Mode gelap / terang =====
+        // Ambil tombol dari HTML berdasarkan id-nya
+        const tombolTema = document.getElementById("tombol-tema");
+
+        // Saat tombol diklik, tambah/hapus class "gelap" pada <body>
+        tombolTema.addEventListener("click", function () {
+            document.body.classList.toggle("gelap");
+
+            // Ubah tulisan tombol sesuai mode yang sedang aktif
+            if (document.body.classList.contains("gelap")) {
+                tombolTema.textContent = "Mode terang";
+            } else {
+                tombolTema.textContent = "Mode gelap";
+            }
+        });
+
+        // ==== 2. Pencarian proyek ====
+        const kotakCari = document.getElementById("cari");
+        const semuaKartu = document.querySelectorAll(".kartu");
+        const pesanKosong = document.getElementById("pesan-kosong");
+
+        // Dijalankan setiap kali pengguna mengetik di kotak pencarian
+        kotakCari.addEventListener("input", function () {
+            const kataKunci = kotakCari.value.toLowerCase();
+            let adaYangCocok = false;
+
+            // Periksa kartu satu per satu
+            semuaKartu.forEach(function (kartu) {
+                const isiKartu = kartu.textContent.toLowerCase();
+
+                if (isiKartu.includes(kataKunci)) {
+                    kartu.style.display = "block"; // tampilkan
+                    adaYangCocok = true;
+                } else {
+                    kartu.style.display = "none"; // sembunyikan
+                }
+            });
+
+            // Tampilkan pesan jika tidak ada kartu yang cocok
+            if (adaYangCocok) {
+                pesanKosong.style.display = "none";
+            } else {
+                pesanKosong.style.display = "block";
+            }
+        });
+    </script>
 </body>
 
 </html>
