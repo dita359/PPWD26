@@ -1,162 +1,112 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portofolio Yan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== 1. Warna =====
-           Variabel CSS: ubah warna cukup di sini saja. */
+        /* MODE TERANG (Default): Latar Lemon Cream #FFF7E1, Teks/Aksen Red Wine #790C12 */
         :root {
-            --latar: #eef3f1;
+            --latar: #FFF7E1;
             --kartu: #ffffff;
-            --teks: #1c2b27;
-            --teks-pudar: #5f726c;
-            --aksen: #0f766e;
+            --teks: #4a070b;
+            --teks-pudar: #790C12;
+            --aksen: #790C12;
+            --border: #f0e1bc;
         }
 
-        /* Saat body diberi class "gelap" oleh JavaScript, warna berganti */
+        /* MODE GELAP: Latar Red Wine Gelap #400609, Kartu Red Wine #790C12, Teks Lemon Cream #FFF7E1 */
         body.gelap {
-            --latar: #121a18;
-            --kartu: #1b2623;
-            --teks: #e6efec;
-            --teks-pudar: #94a8a1;
-            --aksen: #5fd1c4;
+            --latar: #3b0508;
+            --kartu: #5c090e;
+            --teks: #FFF7E1;
+            --teks-pudar: #fcdfa2;
+            --aksen: #FFF7E1;
+            --border: #790C12;
         }
 
-        /* ==== 2. Dasar halaman ==== */
-        * {
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--latar);
             color: var(--teks);
+            transition: all 0.3s ease;
         }
-
-        /* ===== 3. Bagian atas ===== */
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 18px 8%;
+            background: var(--latar);
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid var(--border);
         }
-
-        .logo {
-            margin: 0;
-            color: var(--aksen);
-        }
-
+        .logo { margin: 0; color: var(--aksen); font-size: 1.8rem; }
         #tombol-tema {
-            padding: 8px 16px;
+            padding: 8px 18px;
             border: 2px solid var(--aksen);
             border-radius: 20px;
             background: transparent;
             color: var(--aksen);
+            font-weight: 600;
             cursor: pointer;
+            transition: 0.2s;
         }
-
-        /* ===== 4. Isi halaman ===== */
-        .isi {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
-        }
-
-        .perkenalan {
-            padding: 50px 0 20px;
-        }
-
-        .perkenalan h1 {
-            font-size: 2.6rem;
-            margin: 0 0 8px;
-        }
-
-        .perkenalan p {
-            color: var(--teks-pudar);
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        /* ===== 5. Pencarian ===== */
+        #tombol-tema:hover { background: var(--aksen); color: var(--latar); }
+        .isi { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+        .perkenalan h1 { font-size: 3rem; margin: 0 0 8px; color: var(--aksen); }
+        .perkenalan p { color: var(--teks-pudar); font-size: 1.15rem; margin: 0; }
+        .isi > h2 { font-size: 2rem; margin-top: 40px; color: var(--aksen); }
         #cari {
             width: 100%;
-            padding: 12px 16px;
-            margin: 8px 0 20px;
-            border: 1px solid var(--teks-pudar);
-            border-radius: 10px;
+            padding: 14px 18px;
+            margin: 12px 0 28px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
             font-size: 1rem;
             background: var(--kartu);
             color: var(--teks);
+            outline: none;
+            transition: 0.2s;
         }
-
-        /* ===== 6. Kartu proyek ===== */
-        .daftar-proyek {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
+        #cari:focus { border-color: var(--aksen); }
+        .daftar-proyek { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
         .kartu {
-            display: block;
             padding: 24px;
             background: var(--kartu);
-            border-radius: 14px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            border: 1px solid var(--border);
             color: inherit;
             text-decoration: none;
-            transition: transform 0.2s;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
-        .kartu:hover {
-            transform: translateY(-4px);
-        }
-
-        .kartu h3 {
-            margin: 0 0 6px;
-            color: var(--aksen);
-        }
-
-        .kartu p {
-            margin: 0;
-            color: var(--teks-pudar);
-        }
-
-        /* Pesan "tidak ditemukan" disembunyikan dulu */
-        .pesan-kosong {
-            display: none;
-            color: var(--teks-pudar);
-        }
+        .kartu:hover { transform: translateY(-5px); border-color: var(--aksen); }
+        .kartu h3 { margin: 0 0 6px; color: var(--aksen); font-size: 1.4rem; }
+        .kartu p { margin: 0; color: var(--teks-pudar); font-size: 0.95rem; }
+        .pesan-kosong { display: none; color: var(--teks-pudar); text-align: center; margin-top: 20px; }
     </style>
 </head>
-
 <body>
-    <!-- ===== Bagian atas ===== -->
     <header class="header">
-        <h2 class="logo">Yan</h2>
+        <h2 class="logo">UD</h2>
         <button id="tombol-tema">Mode gelap</button>
     </header>
 
     <main class="isi">
-        <!-- ===== Perkenalan ===== -->
         <section class="perkenalan">
-            <h1>Halo, saya Yan.</h1>
+            <h1>Halo, saya Dita.</h1>
             <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>
         </section>
 
-        <!-- ===== Daftar proyek ===== -->
         <h2>Proyek saya</h2>
-
-        <!-- Kotak pencarian -->
         <input type="text" id="cari" placeholder="Cari proyek...">
 
         <section class="daftar-proyek">
-            <!-- Satu kartu = satu proyek.
-                 href mengarah ke index.html di dalam folder proyek tersebut. -->
             <a class="kartu" href="buku-tamu-digital/index.html">
                 <h3>Buku Tamu Digital</h3>
                 <p>Formulir pencatatan tamu kantor.</p>
@@ -189,60 +139,34 @@
                 <h3>Profile</h3>
                 <p>Informasi profil pengguna.</p>
             </a>
-            <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,
-                 lalu ubah href, judul, dan deskripsinya. -->
         </section>
 
         <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p>
     </main>
 
     <script>
-        // ===== 1. Mode gelap / terang =====
-        // Ambil tombol dari HTML berdasarkan id-nya
         const tombolTema = document.getElementById("tombol-tema");
-
-        // Saat tombol diklik, tambah/hapus class "gelap" pada <body>
-        tombolTema.addEventListener("click", function () {
+        tombolTema.addEventListener("click", () => {
             document.body.classList.toggle("gelap");
-
-            // Ubah tulisan tombol sesuai mode yang sedang aktif
-            if (document.body.classList.contains("gelap")) {
-                tombolTema.textContent = "Mode terang";
-            } else {
-                tombolTema.textContent = "Mode gelap";
-            }
+            tombolTema.textContent = document.body.classList.contains("gelap") ? "Mode terang" : "Mode gelap";
         });
 
-        // ==== 2. Pencarian proyek ====
         const kotakCari = document.getElementById("cari");
         const semuaKartu = document.querySelectorAll(".kartu");
         const pesanKosong = document.getElementById("pesan-kosong");
 
-        // Dijalankan setiap kali pengguna mengetik di kotak pencarian
-        kotakCari.addEventListener("input", function () {
+        kotakCari.addEventListener("input", () => {
             const kataKunci = kotakCari.value.toLowerCase();
             let adaYangCocok = false;
 
-            // Periksa kartu satu per satu
-            semuaKartu.forEach(function (kartu) {
-                const isiKartu = kartu.textContent.toLowerCase();
-
-                if (isiKartu.includes(kataKunci)) {
-                    kartu.style.display = "block"; // tampilkan
-                    adaYangCocok = true;
-                } else {
-                    kartu.style.display = "none"; // sembunyikan
-                }
+            semuaKartu.forEach(kartu => {
+                const cocok = kartu.textContent.toLowerCase().includes(kataKunci);
+                kartu.style.display = cocok ? "block" : "none";
+                if (cocok) adaYangCocok = true;
             });
 
-            // Tampilkan pesan jika tidak ada kartu yang cocok
-            if (adaYangCocok) {
-                pesanKosong.style.display = "none";
-            } else {
-                pesanKosong.style.display = "block";
-            }
+            pesanKosong.style.display = adaYangCocok ? "none" : "block";
         });
     </script>
 </body>
-
 </html>
